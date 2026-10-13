@@ -104,6 +104,10 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .club:hover{border-color:color-mix(in srgb,var(--champ) 60%,var(--line))}
 .club .rank{font:500 .72rem/1 var(--mono);color:var(--muted);letter-spacing:.1em}
 .club h3{font-size:1.9rem}
+.club-head{display:flex;align-items:center;gap:14px;min-width:0}
+.club-head h3{min-width:0;overflow-wrap:anywhere}
+.club-logo{flex:none;width:56px;height:56px;object-fit:contain}
+.top .club:nth-child(-n+2) .club-logo{width:72px;height:72px}
 .top .club:nth-child(-n+2) h3{font-size:2.6rem}
 .club .zone{font:500 .78rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--champ)}
 .club p{color:var(--muted);font-size:.95rem}
@@ -325,11 +329,11 @@ footer ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
 const WHATSAPP = "393286068004";            // numero con prefisso, solo cifre. Es: "393401234567"
 /* Club in ordine di importanza: i primi 5 sono "in evidenza" */
 const CLUBS = [
-  {nome:"Nice", zona:"Saxa Rubra", desc:"Club all’aperto, il riferimento del weekend per reggaeton e commerciale.", tags:["Reggaeton","Commerciale","Tavoli"]},
-  {nome:"Opus Club", zona:"Flaminio", desc:"Sala elegante e servizio al tavolo curato, per le serate importanti.", tags:["House","Commerciale","Privé"]},
+  {nome:"Nice", logo:"logos/nice.png", zona:"Saxa Rubra", desc:"Club all’aperto, il riferimento del weekend per reggaeton e commerciale.", tags:["Reggaeton","Commerciale","Tavoli"]},
+  {nome:"Opus Club", logo:"logos/opus.png", zona:"Flaminio", desc:"Sala elegante e servizio al tavolo curato, per le serate importanti.", tags:["House","Commerciale","Privé"]},
   {nome:"Room 26", zona:"EUR", desc:"Grande club all’EUR con produzioni e ospiti per le serate più piene.", tags:["Commerciale","Hip hop","Tavoli"]},
-  {nome:"HYN", zona:"Ladispoli", desc:"Club sul litorale, una delle serate di punta del weekend.", tags:["Tavoli","Privé"]},
-  {nome:"Art Café", zona:"Villa Borghese", desc:"Storico club sotto Villa Borghese, tavolo consigliato su prenotazione.", tags:["Commerciale","House","Tavoli"]},
+  {nome:"HYN", logo:"logos/hyn.png", zona:"Ladispoli", desc:"Club sul litorale, una delle serate di punta del weekend.", tags:["Tavoli","Privé"]},
+  {nome:"Art Café", logo:"logos/artcafe.png", zona:"Villa Borghese", desc:"Storico club sotto Villa Borghese, tavolo consigliato su prenotazione.", tags:["Commerciale","House","Tavoli"]},
   {nome:"Teatro Centrale", zona:"Centro", desc:"Club in un teatro nel cuore di Roma.", tags:["Commerciale","Cena"]},
   {nome:"Nimbus", zona:"Valle Giulia", desc:"Terrazza con vista, aperta nella stagione estiva.", tags:["House","Estate"]},
   {nome:"Villa Sublime", zona:"Fleming", desc:"Villa con giardino a Roma nord.", tags:["Commerciale","Tavoli"]},
@@ -345,7 +349,7 @@ function card(c, i){
   return `<article class="club">
     ${i < FEATURED ? `<span class="featured-mark">In evidenza</span>` : ``}
     <span class="rank">${String(i+1).padStart(2,"0")}</span>
-    <h3>${esc(c.nome)}</h3>
+    <div class="club-head">${c.logo ? `<img class="club-logo" src="${esc(c.logo)}" alt="" width="56" height="56" loading="lazy">` : ``}<h3>${esc(c.nome)}</h3></div>
     <span class="zone">${esc(c.zona)}</span>
     <p>${esc(c.desc)}</p>
     <div class="tags">${c.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
