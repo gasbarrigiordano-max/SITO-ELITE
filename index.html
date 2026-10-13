@@ -349,7 +349,7 @@ function card(c, i){
   return `<article class="club">
     ${i < FEATURED ? `<span class="featured-mark">In evidenza</span>` : ``}
     <span class="rank">${String(i+1).padStart(2,"0")}</span>
-    <div class="club-head">${c.logo ? `<img class="club-logo" src="${esc(c.logo)}" alt="" width="56" height="56" loading="lazy">` : ``}<h3>${esc(c.nome)}</h3></div>
+    <div class="club-head">${c.logo ? `<img class="club-logo" src="${esc(c.logo)}?v=3" alt="" width="56" height="56" loading="lazy">` : ``}<h3>${esc(c.nome)}</h3></div>
     <span class="zone">${esc(c.zona)}</span>
     <p>${esc(c.desc)}</p>
     <div class="tags">${c.tags.map(t=>`<span>${esc(t)}</span>`).join("")}</div>
