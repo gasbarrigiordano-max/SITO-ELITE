@@ -22,7 +22,7 @@
 <meta name="twitter:title" content="Elite Clublist Roma">
 <meta name="twitter:description" content="Liste, tavoli e privé nei club di Roma. Prenoti in un minuto su WhatsApp.">
 <meta name="twitter:image" content="https://elitelist.it/og-image.jpg">
-<meta name="theme-color" content="#10131B">
+<meta name="theme-color" content="#0B0B0C">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -33,8 +33,9 @@
 <style>
 /* Layout: a privé pass. Navy ground and brushed gold from the Elite logo, one deep-blue glow; the booking form prints a live "pass" */
 :root{
-  --bg:#10131B; --panel:#191D28; --line:#2D3344;
-  --fg:#F3EADF; --muted:#A8978C; --champ:#D2B47C; --velvet:#34406A; --ok:#7FC49A;
+  --bg:#0B0B0C; --panel:#17171A; --line:#2B2B2F;
+  --fg:#F5EFE6; --muted:#ADA398; --champ:#D2B47C; --velvet:#3A2E1A; --ok:#7FC49A;
+  --glass:rgba(30,26,20,.42); --glass-edge:rgba(255,255,255,.12);
   --display:"Bodoni Moda", "Didot", Georgia, serif;
   --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:"DM Mono", ui-monospace, Menlo, monospace;
@@ -207,6 +208,45 @@ footer ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
 .nye-foot p{margin:0;max-width:60ch}
 @media (max-width:900px){.nye-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.nye-grid{grid-template-columns:1fr}.countdown div{min-width:0;flex:1}}
+
+/* Glass: navy-free black ground with gold glows, frosted panels (from the personal dashboard) */
+body{background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(45% 35% at 15% 8%,rgba(210,180,124,.38),transparent 70%),radial-gradient(40% 40% at 90% 30%,rgba(130,95,50,.5),transparent 70%),radial-gradient(50% 40% at 75% 85%,rgba(210,180,124,.2),transparent 70%),radial-gradient(45% 45% at 5% 75%,rgba(80,64,40,.55),transparent 70%),linear-gradient(160deg,#2c2519 0%,#151310 55%,#0a0a0a 100%)}
+section,#capodanno{background:transparent;border-top:0}
+.hero::before{display:none}
+nav{background:var(--glass);border-bottom-color:rgba(255,255,255,.10)}
+.club,.nye,.countdown div,.pass,.nye-foot,.bus-notes>div,.steps li,.tile{background:var(--glass);-webkit-backdrop-filter:blur(26px) saturate(150%);backdrop-filter:blur(26px) saturate(150%);border:1px solid var(--glass-edge);box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.10);border-radius:24px}
+.club,.nye{padding:24px}
+.bus-notes>div,.steps li{padding:20px}
+.nye-foot{border-style:solid}
+.nye.all{background:linear-gradient(160deg,rgba(210,180,124,.22),var(--glass));border-color:rgba(210,180,124,.45)}
+input,select,textarea{background-color:rgba(0,0,0,.28);border-color:rgba(255,255,255,.12);border-radius:14px}
+.chips span,.tags span{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.btn-solid{box-shadow:0 8px 24px rgba(210,180,124,.4)}
+
+/* hero bento */
+.hero .wrap{grid-template-columns:1.1fr 1fr;align-items:center}
+.bento{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{padding:20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.tile > b{font:500 2rem/1 var(--display);color:var(--fg)}
+.tile > span{color:var(--muted);font-size:.85rem}
+.tile.big,.tile.wide{grid-column:1/-1}
+.tile.big{background:linear-gradient(150deg,rgba(210,180,124,.28),var(--glass));border-color:rgba(210,180,124,.45);text-decoration:none;color:inherit;transition:transform .2s}
+.tile.big:hover{transform:translateY(-2px)}
+.tile.big:focus-visible{outline:2px solid var(--champ);outline-offset:3px}
+.tile .tile-title{font:500 1.7rem/1.1 var(--display)}
+.tile .countdown{margin-top:10px}
+.tile .countdown div{background:rgba(0,0,0,.22);box-shadow:none;border-radius:16px;-webkit-backdrop-filter:none;backdrop-filter:none}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}}
+
+/* club cards: big centred logo */
+.club{align-items:center;text-align:center}
+.club .rank{align-self:flex-start}
+.club-head{flex-direction:column;gap:12px}
+.club-logo{width:88px;height:88px}
+.top .club:nth-child(-n+2) .club-logo{width:104px;height:104px}
+.club .tags{justify-content:center}
+.club button{align-self:center}
 </style>
 
 </head>
@@ -235,26 +275,29 @@ footer ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
         <a class="btn btn-ghost" href="#capodanno">Capodanno 2027 →</a>
       </div>
     </div>
-     <div class="stats">
-      <div class="stat"><b>9</b><span>club tra Roma e Ladispoli</span></div>
-      <div class="stat"><b>3</b><span>fermate navetta</span></div>
-      <div class="stat"><b>&lt;10′</b><span>per la risposta su WhatsApp</span></div>
+    <div class="bento">
+      <a class="tile big" href="#capodanno">
+        <span class="label">Capodanno 2027</span>
+        <b class="tile-title">Mancano</b>
+        <div class="countdown" aria-label="Conto alla rovescia per la mezzanotte di Capodanno">
+          <div><b data-cd="d">–</b><span>giorni</span></div>
+          <div><b data-cd="h">–</b><span>ore</span></div>
+          <div><b data-cd="m">–</b><span>minuti</span></div>
+        </div>
+      </a>
+      <div class="tile"><b>9</b><span>club tra Roma e Ladispoli</span></div>
+      <div class="tile"><b>3</b><span>fermate navetta</span></div>
+      <div class="tile wide"><b>&lt;10′</b><span>per la risposta su WhatsApp</span></div>
     </div>
   </div>
 </header>
 
 <section id="capodanno">
-  <span class="nye-year" aria-hidden="true">2027</span>
   <div class="wrap">
     <div class="head">
       <div>
         <span class="label">31 dicembre 2026 · Capodanno</span>
         <h2>La notte di Capodanno, <em>tutta organizzata</em>.</h2>
-        <div class="countdown" id="countdown" aria-label="Conto alla rovescia per la mezzanotte">
-          <div><b id="cdD">–</b><span>giorni</span></div>
-          <div><b id="cdH">–</b><span>ore</span></div>
-          <div><b id="cdM">–</b><span>minuti</span></div>
-        </div>
       </div>
       <p class="muted">Cena, party, tavolo in discoteca, notte in hotel o in villa e navetta: scegli quello che ti serve oppure prendi tutto. I posti per il 31 finiscono prima del solito.</p>
     </div>
@@ -442,9 +485,8 @@ document.addEventListener("click", e => {
   const pad = n => String(n).padStart(2, "0");
   function tick(){
     const ms = Math.max(0, end - Date.now());
-    $("cdD").textContent = Math.floor(ms / 864e5);
-    $("cdH").textContent = pad(Math.floor(ms / 36e5) % 24);
-    $("cdM").textContent = pad(Math.floor(ms / 6e4) % 60);
+    const v = {d: Math.floor(ms / 864e5), h: pad(Math.floor(ms / 36e5) % 24), m: pad(Math.floor(ms / 6e4) % 60)};
+    document.querySelectorAll("[data-cd]").forEach(el => el.textContent = v[el.dataset.cd]);
   }
   tick(); setInterval(tick, 30000);
 })();
