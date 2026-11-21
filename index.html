@@ -22,7 +22,7 @@
 <meta name="twitter:title" content="Elite Clublist Roma">
 <meta name="twitter:description" content="Liste e tavoli privé nei club di Roma. Prenoti in un minuto su WhatsApp.">
 <meta name="twitter:image" content="https://elitelist.it/og-image.jpg?v=2">
-<meta name="theme-color" content="#0B0B0C">
+<meta name="theme-color" content="#29251C">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -209,8 +209,9 @@ footer ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px}
 @media (max-width:900px){.nye-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.nye-grid{grid-template-columns:1fr}.countdown div{min-width:0;flex:1}}
 
-/* Glass: navy-free black ground with gold glows, frosted panels (from the personal dashboard) */
-body{background:var(--bg)}
+/* Glass: black ground with gold glows, frosted panels (from the personal dashboard) */
+/* iOS Safari tints the status bar from the page background, not the glow layer: match the nav tone */
+body{background:#29251C}
 body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(45% 35% at 15% 8%,rgba(210,180,124,.38),transparent 70%),radial-gradient(40% 40% at 90% 30%,rgba(130,95,50,.5),transparent 70%),radial-gradient(50% 40% at 75% 85%,rgba(210,180,124,.2),transparent 70%),radial-gradient(45% 45% at 5% 75%,rgba(80,64,40,.55),transparent 70%),linear-gradient(160deg,#2c2519 0%,#151310 55%,#0a0a0a 100%)}
 section,#capodanno{background:transparent;border-top:0}
 .hero::before{display:none}
