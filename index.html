@@ -311,8 +311,8 @@ input,select,textarea{background-color:rgba(0,0,0,.28);border-color:rgba(255,255
       <article class="nye all"><span class="n">06 · Pacchetto completo</span><h3>Tutto incluso</h3><p>Navetta, cena, party, tavolo e pernottamento: pensiamo a tutto noi.</p><button type="button" data-nye="Pacchetto completo (tutto incluso)">Prenota →</button></article>
     </div>
     <div class="nye-foot">
-      <p class="muted"><b style="color:var(--fg)">Prezzi su WhatsApp.</b> Tutti i nostri club più hotel e ville per cena e pernottamento: i locali per il 31 sono in arrivo, chiedici il listino.</p>
-      <a class="btn btn-solid" id="nyeWa" href="#prenota" target="_blank" rel="noopener">Chiedi il listino</a>
+      <p class="muted"><b style="color:var(--fg)">Prezzi su WhatsApp.</b> Tutti i nostri club più hotel e ville per cena e pernottamento: i locali per il 31 sono in arrivo. Richiedi maggiori informazioni per la tua serata.</p>
+      <a class="btn btn-solid" id="nyeWa" href="#prenota" target="_blank" rel="noopener">Richiedi informazioni</a>
     </div>
   </div>
 </section>
@@ -527,7 +527,7 @@ function update(){
   if (WHATSAPP) {
     wa.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
     wa.removeAttribute("aria-disabled");
-    $("nyeWa").href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Ciao Elite Clublist! Mi mandate il listino per Capodanno?");
+    $("nyeWa").href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Ciao Elite Clublist! Vorrei maggiori informazioni per la mia serata di Capodanno.");
     $("numLine").innerHTML = "Oppure scrivi a <b>+" + WHATSAPP.replace(/^(\d{2})(\d{3})(\d{3})(\d+)$/, "$1 $2 $3 $4") + "</b>";
   } else {
     wa.setAttribute("aria-disabled","true");
